@@ -20,17 +20,17 @@
 
 ## items テーブル
 
-| Column         | Type       | Options                        |
-| -------------- | ---------- | ------------------------------ |
-| name           | string     | null: false                    |
-| description    | text       | null: false                    |
-| detail_id      | integer    | null: false                    |
-| state_id       | integer    | null: false                    |
-| sipping_id     | integer    | null: false                    |
-| prefecture_id  | integer    | null: false                    |
-| sipping_day_id | integer    | null: false                    |
-| selling_price  | integer    | null: false                    |
-| user           | references | null: false, foreign_key: true |
+| Column          | Type       | Options                        |
+| --------------- | ---------- | ------------------------------ |
+| name            | string     | null: false                    |
+| description     | text       | null: false                    |
+| detail_id       | integer    | null: false                    |
+| state_id        | integer    | null: false                    |
+| sipping_cost_id | integer    | null: false                    |
+| prefecture_id   | integer    | null: false                    |
+| sipping_day_id  | integer    | null: false                    |
+| selling_price   | integer    | null: false                    |
+| user            | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -60,7 +60,7 @@
 | address        | string     | null: false                    |
 | building       | string     |                                |
 | phone_number   | string     | null: false                    |
-| user_item     | references | null: false, foreign_key: true |
+| user_item      | references | null: false, foreign_key: true |
 
 ### Association
 

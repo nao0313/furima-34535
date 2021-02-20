@@ -6,13 +6,12 @@
 | --------------------- | --------| ----------- |
 | nickname              | string  | null: false |
 | email                 | string  | null: false |
-| password              | string  | null: false |
-| password_confirmation | string  | null: false |
-| last_name             | text    | null: false |
-| first_name            | text    | null: false |
-| last_name_kana        | text    | null: false |
-| first_name_kana       | text    | null: false |
-| birthday              | integer | null: false |
+| encrypted_password    | string  | null: false |
+| last_name             | string  | null: false |
+| first_name            | string  | null: false |
+| last_name_kana        | string  | null: false |
+| first_name_kana       | string  | null: false |
+| birthday              | date    | null: false |
 
 ### Association
 
@@ -21,22 +20,22 @@
 
 ## items テーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| item_name     | text       | null: false                    |
-| description   | text       | null: false                    |
-| details       | string     | null: false                    |
-| status        | string     | null: false                    |
-| sipping       | string     | null: false                    |
-| delivery      | string     | null: false                    |
-| sipping_day   | string     | null: false                    |
-| selling_price | integer    | null: false                    |
-| user          | references | null: false, foreign_key: true |
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| name_id        | string     | null: false                    |
+| description_id | integer    | null: false                    |
+| details_id     | integer    | null: false                    |
+| status_id      | integer    | null: false                    |
+| sipping_id     | integer    | null: false                    |
+| delivery_id    | integer    | null: false                    |
+| sipping_day_id | integer    | null: false                    |
+| selling_price  | integer    | null: false                    |
+| user           | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-- has_one    :purchases
+- belongs_to :user
+- has_one    :purchase
 
 ## purchases テーブル
 
@@ -50,9 +49,9 @@
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
-- has_one    :shippings
+- belongs_to :user
+- belongs_to :item
+- has_one    :shipping
 
 ## shippings テーブル
 
@@ -68,4 +67,4 @@
 
 ### Association
 
-- belongs_to :purchases
+- belongs_to :purchase

@@ -22,8 +22,8 @@
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| name_id        | string     | null: false                    |
-| description_id | integer    | null: false                    |
+| name           | string     | null: false                    |
+| description    | string     | null: false                    |
 | details_id     | integer    | null: false                    |
 | status_id      | integer    | null: false                    |
 | sipping_id     | integer    | null: false                    |
@@ -41,7 +41,6 @@
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| card_information | integer    | null: false                    |
 | expiration       | integer    | null: false                    |
 | security_code    | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
@@ -55,15 +54,15 @@
 
 ## shippings テーブル
 
-| Column       | Type       | Options                        |
-| ------------ | ---------- | ------------------------------ |
-| postal_code  | integer    | null: false                    |
-| prefectures  | string     | null: false                    |
-| city         | text       | null: false                    |
-| address      | text       | null: false                    |
-| building     | text       |                                |
-| phone_number | integer    | null: false                    |
-| purchased    | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| postal_code   | stringer   | null: false                    |
+| prefectures_id| string     | null: false                    |
+| city          | string     | null: false                    |
+| address       | string     | null: false                    |
+| building      | string     |                                |
+| phone_number  | string     | null: false                    |
+| purchased     | references | null: false, foreign_key: true |
 
 ### Association
 

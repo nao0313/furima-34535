@@ -97,17 +97,25 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください')
       end
-      it 'ユーザー本名は、半角では登録できない' do
+      it 'ユーザー本名(last_name)は、半角では登録できない' do
         @user.last_name = 'aaa000'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Last name is invalid')
+      end
+      it 'ユーザー本名(first_name)は、半角では登録できない' do
         @user.first_name = 'aaa000'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Last name is invalid', 'First name is invalid')
+        expect(@user.errors.full_messages).to include('First name is invalid')
       end
-      it 'ユーザー本名のフリガナは、半角では登録できない' do
+      it 'ユーザー本名(last_name_kana)のフリガナは、半角では登録できない' do
         @user.last_name_kana = 'aaa000'
+        @user.valid?
+        expect(@user.errors.full_messages).to include('Last name kana is invalid')
+      end
+      it 'ユーザー本名(firstt_name_kana)のフリガナは、半角では登録できない' do
         @user.first_name_kana = 'aaa000'
         @user.valid?
-        expect(@user.errors.full_messages).to include('Last name kana is invalid', 'First name kana is invalid')
+        expect(@user.errors.full_messages).to include('First name kana is invalid')
       end
     end
   end

@@ -4,13 +4,14 @@ class Item < ApplicationRecord
     validates :name
     validates :description
     validates :image
+    validates :selling_price
 
     with_options numericality: { other_than: 1 } do
       validates :detail_id
       validates :state_id 
       validates :sipping_cost_id
       validates :prefecture_id
-      validates :selling_price_id
+      validates :sipping_day_id
     end
   end
 
@@ -23,6 +24,6 @@ class Item < ApplicationRecord
   belongs_to :state
   belongs_to :sipping_cost
   belongs_to :prefecture
-  belongs_to :selling_price
+  belongs_to :sipping_day
 
 end

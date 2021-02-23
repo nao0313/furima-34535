@@ -4,7 +4,14 @@ class Item < ApplicationRecord
     validates :name
     validates :description
     validates :image
-    validates :selling_price
+
+    with_options format: {with: /\A[0-9]+\z/} do
+      with_options length: {minimum: 3, maxinum: 7},numericality: { only_integer: true,
+        greater_than: 299, less_than: 10000000} do
+          validates :selling_price 
+        end
+    end
+    
 
     with_options numericality: { other_than: 1 } do
       validates :detail_id
@@ -20,6 +27,9 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  
-
+  belongs_to_active_hash :detail
+  belongs_to_active_hash :state
+  belongs_to_active_hash :sipping_cost
+  belongs_to_active_hash :sipping_day
+  belongs_to_active_hash :prefecture
 end

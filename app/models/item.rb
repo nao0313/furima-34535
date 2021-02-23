@@ -20,10 +20,6 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :detail
-  belongs_to :state
-  belongs_to :sipping_cost
-  belongs_to :prefecture
-  belongs_to :sipping_day
+  
 
 end

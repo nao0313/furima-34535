@@ -9,11 +9,10 @@ class Detail < ActiveHash::Base
     { id: 7, name: 'おもちゃ・ホビー・グッズ' },
     { id: 8, name: '家電・スマホ・カメラ' },
     { id: 9, name: 'スポーツ・レジャー' },
-    { id: 9, name: 'ハンドメイド' },
+    { id: 10, name: 'ハンドメイド' },
     { id: 11, name: 'その他' }
   ]
 
-    
-    has_many :items
+  belongs_to_active_hash :item
     
   end

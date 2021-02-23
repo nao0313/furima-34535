@@ -15,7 +15,7 @@ RSpec.describe Item, type: :model do
         expect(@item).to be_valid
       end
       it 'selling_priceが9999999以内で半角数字であれば登録できる' do
-        @item.selling_price = 9999999
+        @item.selling_price = 9_999_999
         expect(@item).to be_valid
       end
     end
@@ -44,7 +44,7 @@ RSpec.describe Item, type: :model do
       it 'sdetail_idが１が選択された場合登録できない' do
         @item.detail_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Detail must be other than 1")
+        expect(@item.errors.full_messages).to include('Detail must be other than 1')
       end
       it 'state_idが空では登録できない' do
         @item.state_id = ''
@@ -54,7 +54,7 @@ RSpec.describe Item, type: :model do
       it 'state_idが１選択された場合登録できない' do
         @item.state_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("State must be other than 1")
+        expect(@item.errors.full_messages).to include('State must be other than 1')
       end
       it 'sipping_cost_idが空では登録できない' do
         @item.sipping_cost_id = ''
@@ -64,7 +64,7 @@ RSpec.describe Item, type: :model do
       it 'sipping_cost_idが１が選択された場合登録できない' do
         @item.sipping_cost_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Sipping cost must be other than 1")
+        expect(@item.errors.full_messages).to include('Sipping cost must be other than 1')
       end
       it 'prefecture_idが空では登録できない' do
         @item.prefecture_id = ''
@@ -72,9 +72,9 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Prefecture can't be blank", 'Prefecture is not a number')
       end
       it 'prefecture_idが１が洗濯された場合登録できない' do
-        @item.prefecture_id= 1
+        @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
+        expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
       end
       it 'sipping_day_idが空では登録できない' do
         @item.sipping_day_id = ''
@@ -84,7 +84,7 @@ RSpec.describe Item, type: :model do
       it 'sipping_day_idが１が洗濯された場合登録できない' do
         @item.sipping_day_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Sipping day must be other than 1")
+        expect(@item.errors.full_messages).to include('Sipping day must be other than 1')
       end
 
       it 'imageが空では登録できない' do
@@ -98,7 +98,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Selling price must be greater than 299')
       end
       it 'selling_priceが10000000以下では登録できない' do
-        @item.selling_price = 10000000
+        @item.selling_price = 10_000_000
         @item.valid?
         expect(@item.errors.full_messages).to include('Selling price must be less than 10000000')
       end

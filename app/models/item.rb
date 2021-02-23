@@ -3,13 +3,12 @@ class Item < ApplicationRecord
     validates :name
     validates :description
     validates :image
-
-    with_options format: { with: /\A[0-9]+\z/ } do
-      with_options length: { minimum: 3, maxinum: 7 }, numericality: { only_integer: true,
-                                                                       greater_than: 299, less_than: 10_000_000 } do
-        validates :selling_price
-      end
-    end
+    validates :selling_price, format: { with: /\A[0-9]+\z/ },length: { minimum: 3, maxinum: 7 }, numericality: { only_integer: true,
+      greater_than: 299, less_than: 10_000_000 } 
+   
+        
+    
+  
 
     with_options numericality: { other_than: 1 } do
       validates :detail_id

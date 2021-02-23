@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :item do
-
     name             { Faker::Name.initials(number: 2) }
     description      { Faker::Lorem.characters(number: 40) }
     selling_price    { '300' }

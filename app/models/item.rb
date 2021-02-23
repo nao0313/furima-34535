@@ -1,28 +1,25 @@
 class Item < ApplicationRecord
-
   with_options presence: true do
     validates :name
     validates :description
     validates :image
 
-    with_options format: {with: /\A[0-9]+\z/} do
-      with_options length: {minimum: 3, maxinum: 7},numericality: { only_integer: true,
-        greater_than: 299, less_than: 10000000} do
-          validates :selling_price 
-        end
+    with_options format: { with: /\A[0-9]+\z/ } do
+      with_options length: { minimum: 3, maxinum: 7 }, numericality: { only_integer: true,
+                                                                       greater_than: 299, less_than: 10_000_000 } do
+        validates :selling_price
+      end
     end
-    
 
     with_options numericality: { other_than: 1 } do
       validates :detail_id
-      validates :state_id 
+      validates :state_id
       validates :sipping_cost_id
       validates :prefecture_id
       validates :sipping_day_id
     end
   end
 
-  
   belongs_to :user
   has_one_attached :image
 

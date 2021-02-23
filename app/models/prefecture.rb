@@ -50,6 +50,6 @@ class Prefecture < ActiveHash::Base
     { id: 48, name: '沖縄' }
   ]
     
-  belongs_to_active_hash :item
+
     
   end

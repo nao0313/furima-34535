@@ -10,6 +10,6 @@ class State < ActiveHash::Base
   ]
 
     
-  belongs_to_active_hash :item
+ 
 
   end

@@ -5,7 +5,6 @@ class SippingCost < ActiveHash::Base
     { id: 3, name: '送料込み(出品者負担)' }
   ]
   
-    
-  belongs_to_active_hash :item
+
 
   end

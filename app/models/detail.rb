@@ -13,6 +13,6 @@ class Detail < ActiveHash::Base
     { id: 11, name: 'その他' }
   ]
 
-  belongs_to_active_hash :item
+  
     
   end

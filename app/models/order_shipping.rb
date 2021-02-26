@@ -13,7 +13,7 @@ class OrderShipping
   end
 
   def save
-    oder = Order.create(udre_id: user_id, item_id: item_id)
-    Sipping.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, address: address, building: building, phone_number:phone_number, order_id: order.id)
+    order = Order.create(udre_id: user_id, item_id: item_id)
+    Shipping.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, address: address, building: building, phone_number:phone_number, order_id: order.id)
   end
 end

@@ -9,7 +9,7 @@ class OrderShipping
     validates :prefecture_id
     validates :city
     validates :address
-    validates :phone_number, format: { with: /^0\d{9,10}$/ }
+    validates :phone_number, format: { with: /\0\d{9,10}＼z/ }
   end
 
   def save

@@ -7,8 +7,9 @@ class OrderShipping
     validates :prefecture_id, numericality: { other_than: 1 }
     validates :city
     validates :address
-    validates :phone_number, format: { with: /\A(0{1}\d{9,10})\z/ }
+    validates :phone_number, format: { with: /\A[0-9]{11}\z/ }
     validates :token
+    validates :item_id
   end
 
   def save

@@ -7,8 +7,6 @@ class OrdersController < ApplicationController
     @order_shipping = OrderShipping.new
   end
 
-
-
   def create
     @item = Item.find(params[:item_id])
     @order_shipping = OrderShipping.new(order_params)
@@ -24,23 +22,22 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order_shipping).permit(:postal_code, :prefecture_id, :city, :address, :building, :phone_number, :selling_price, :user_id ).merge(user_id: current_user.id, token: params[:token], item_id: params[:item_id])
+    params.require(:order_shipping).permit(:postal_code, :prefecture_id, :city, :address, :building, :phone_number, :selling_price, :user_id).merge(
+      user_id: current_user.id, token: params[:token], item_id: params[:item_id]
+    )
   end
 
-    def pay_item
-      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-      Payjp::Charge.create(
-        amount: Item.find(params[:item_id]).selling_price,
-        card: order_params[:token],
-        currency: 'jpy'
-      )
-    end
+  def pay_item
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp::Charge.create(
+      amount: Item.find(params[:item_id]).selling_price,
+      card: order_params[:token],
+      currency: 'jpy'
+    )
+  end
 
-    def move_to_index
-      @item = Item.find(params[:item_id])
-      if @item.order.present?
-        redirect_to root_path
-      end
-    end
-    
+  def move_to_index
+    @item = Item.find(params[:item_id])
+    redirect_to root_path if @item.order.present?
+  end
 end

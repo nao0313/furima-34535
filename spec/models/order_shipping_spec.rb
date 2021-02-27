@@ -34,10 +34,10 @@ RSpec.describe OrderShipping, type: :model do
         @order_shipping.valid?
         expect(@order_shipping.errors.full_messages).to include('Prefecture must be other than 1')
       end
-      it 'cityが空だと保存できない'do
-      @order_shipping.city = ''
-      @order_shipping.valid?
-      expect(@order_shipping.errors.full_messages).to include("City can't be blank")
+      it 'cityが空だと保存できない' do
+        @order_shipping.city = ''
+        @order_shipping.valid?
+        expect(@order_shipping.errors.full_messages).to include("City can't be blank")
       end
       it 'addressが空だと保存できない' do
         @order_shipping.address = ''
@@ -52,14 +52,14 @@ RSpec.describe OrderShipping, type: :model do
       it 'phone_numderが数値以外だと保存できない' do
         @order_shipping.phone_number = 'ああああああ'
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include("Phone number is invalid")
+        expect(@order_shipping.errors.full_messages).to include('Phone number is invalid')
       end
       it 'phone_numderが12桁以上だと保存できない' do
         @order_shipping.phone_number = '123456789012'
         @order_shipping.valid?
-        expect(@order_shipping.errors.full_messages).to include("Phone number is invalid")
+        expect(@order_shipping.errors.full_messages).to include('Phone number is invalid')
       end
-      it "tokenが空では登録できないこと" do
+      it 'tokenが空では登録できないこと' do
         @order_shipping.token = ''
         @order_shipping.valid?
         expect(@order_shipping.errors.full_messages).to include("Token can't be blank")
